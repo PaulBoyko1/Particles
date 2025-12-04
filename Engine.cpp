@@ -41,18 +41,18 @@ void Engine::input() {
   }
 }
 void Engine::update(float dtAsSeconds) {
-  for (std::vector<Particle>::iterator it = m_particles.begin(); it != m_particles.end(); )
-    {
-        if (it->getTTL() > 0.0f)
-        {
-            it->update(dtAsSeconds);
-            ++it;
-        }
-        else
-        {
-            it = m_particles.erase(it);
-        }
-    }
+  for (/*vector<Particle>::iterator*/ auto i = m_particles.begin(); i != m_particles.end(); )
+  {
+      if (i->getTTL() > 0.0)
+      {
+          i->update(dtAsSeconds);
+          ++it;
+      }
+      else
+      {
+          i = m_particles.erase(it);
+      }
+  }
   /*for (int i = 0; i < m_particles.size(); i = i) {
     if (m_particle[i].getTTL() > 0.0) {
       m_particle[i].update(dtAsSeconds);
@@ -64,5 +64,10 @@ void Engine::update(float dtAsSeconds) {
   }*/
 }
 void Engine::draw() {
-
+  m_Window.clear();
+  for (int i = 0; i < m_particles.size(); i++)
+  {
+       m_Window.draw(m_particles[i]);
+  }
+  m_Window.display();
 }
