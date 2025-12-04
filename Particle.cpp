@@ -1,6 +1,8 @@
 #include "Particle.h"
 
-
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) {
+m_centerCoordinate
+}
 bool Particle::almostEqual(double a, double b, double eps)
 {
 	return fabs(a - b) < eps;
@@ -144,3 +146,4 @@ void Particle::unitTests()
 
     cout << "Score: " << score << " / 7" << endl;
 }
+
