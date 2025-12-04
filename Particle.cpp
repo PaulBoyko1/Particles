@@ -1,7 +1,23 @@
 #include "Particle.h"
 
-Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) {
-m_centerCoordinate
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints) {
+	m_ttl = TTL;
+
+	numPoints = m_numPoints;
+	m_radiansPerSec = (float)rand() / RAND_MAX * PI;
+	setCenter(0,0);
+	setSize(target.getSize().x, (-1.0) * target.getSize().y);
+	m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
+	m_vx = (rand() % 401) + 100;
+	m_vy = (rand() % 401) + 100;
+	if (rand() % 2 != 0) m_vx *= -1;
+	m_color1 = Color::White;
+	size_t RGD[3];
+	for (int i = 0; i < 3; i++) RGD[i] = rand() % 256;
+	m_color2 = Color(RGD[0], RGD[1], RGD[2]);
+	
+	
+	
 }
 bool Particle::almostEqual(double a, double b, double eps)
 {
@@ -146,4 +162,5 @@ void Particle::unitTests()
 
     cout << "Score: " << score << " / 7" << endl;
 }
+
 
