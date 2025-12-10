@@ -47,11 +47,11 @@ void Engine::update(float dtAsSeconds) {
       if (i->getTTL() > 0.0)
       {
           i->update(dtAsSeconds);
-          ++it;
+          ++i;
       }
       else
       {
-          i = m_particles.erase(it);
+          i = m_particles.erase(i);
       }
   }
   /*for (int i = 0; i < m_particles.size(); i = i) {
