@@ -30,14 +30,13 @@ void Engine::input() {
       if (event.key.code == Keyboard::Escape) {
         m_Window.close();
       }
-    
-      if (event.type == Event::MouseButtonPressed) {
-        if (event.mouseButton.button == Mouse::Left) {
-          for (int i = 0; i < 5; i++) {
-            int r = (rand() % 26) + 25;
-            Particle p(m_Window, r);
-            m_particles.push_back(p);
-          }
+    }
+    if (event.type == Event::MouseButtonPressed) {
+      if (event.mouseButton.button == Mouse::Left) {
+        for (int i = 0; i < 5; i++) {
+          int r = (rand() % 26) + 25;
+          Particle p(m_Window, r, Vector2i(event.mouseButton.x, event.mouseButton.y));
+          m_particles.push_back(p);
         }
       }
     }
