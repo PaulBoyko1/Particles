@@ -3,7 +3,7 @@
 #include <ctime>
 
 Engine::Engine() {
-  VideoMode comp = VideoMode::getDesktopMode();
+  VideoMode desktop = VideoMode::getDesktopMode();
   m_Window.create(desktop, "Click for particles!");
 }
 void Engine::run() {
